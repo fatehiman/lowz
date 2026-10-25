@@ -1,0 +1,18 @@
+* text=auto eol=lf
+
+*.blade.php diff=html
+*.css diff=css
+*.html diff=html
+*.md diff=markdown
+*.php diff=php
+
+/.github export-ignore
+CHANGELOG.md export-ignore
+.styleci.yml export-ignore
+*.sh text eol=lf
+*.mp4 binary
+*.webm binary
+reference-docs/ export-ignore
+*.md export-ignore
+/tests export-ignore
+phpunit.xml export-ignore
