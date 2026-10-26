@@ -2,6 +2,7 @@
 
 namespace App\Services;
 
+use App\Models\Product;
 use HTMLPurifier;
 use HTMLPurifier_Config;
 
@@ -9,7 +10,26 @@ class HtmlSanitizer
 {
     public static function article(string $html): string
     {
-        return static::purify(static::autoParagraph($html), 'article');
+        return static::unlinkInactiveProducts(static::purify(static::autoParagraph($html), 'article'));
+    }
+
+    /**
+     * Old articles link to product pages. A link to a product that is not active (404) becomes plain text.
+     */
+    protected static function unlinkInactiveProducts(string $html): string
+    {
+        if (! str_contains($html, '/products/')) {
+            return $html;
+        }
+
+        static $active = null;
+        $active ??= Product::query()->where('is_active', true)->pluck('slug')->all();
+
+        return preg_replace_callback(
+            '~<a\s[^>]*href="[^"]*/products/([^"/?#]+)[^"]*"[^>]*>(.*?)</a>~su',
+            fn (array $m) => in_array(urldecode($m[1]), $active, true) ? $m[0] : $m[2],
+            $html
+        ) ?? $html;
     }
 
     /**

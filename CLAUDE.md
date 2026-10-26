@@ -5,7 +5,7 @@ Production: https://lowz.ir on `ger1` (user `lowz`, app in `/mnt/ger_hd1/www/low
 
 ## Rules for this repo
 - The repo is **public**: never commit `.env`, keys, passwords or `credentials.md`.
-- Products, prices, articles and reviews are still demo data (the site is public). Phone numbers and social links are hidden on purpose (empty config). Seeders must stay idempotent (`firstOrCreate`): `db:seed` runs on every deploy.
+- The shop shows the real catalog (`CatalogProductSeeder`, `sort_order >= 100`); the 33 old demo products are hidden. Articles and reviews are still demo data (the site is public). Phone numbers and social links are hidden on purpose (empty config). Seeders must stay idempotent (`firstOrCreate`): `db:seed` runs on every deploy.
 - Shop name/contact come from `config/shop.php`; do not hard-code the shop name in views.
 - "Under construction" is a DB setting (`maintenance_enabled`); never let a seeder or deploy turn it back on.
 - `*.md` and `reference-docs/` are committed but never deployed (`.gitattributes` export-ignore). All `.md` files stay in the root.

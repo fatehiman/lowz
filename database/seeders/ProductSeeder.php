@@ -48,7 +48,8 @@ class ProductSeeder extends Seeder
                 'short_description' => $short,
                 'description' => $description,
                 'image' => "images/products/{$slug}.webp",
-                'is_active' => true,
+                // The 33 demo products stay hidden (the real catalog is CatalogProductSeeder).
+                'is_active' => false,
                 'sort_order' => $i + 1,
             ]);
         }

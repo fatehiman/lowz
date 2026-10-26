@@ -17,7 +17,7 @@ class HomeController extends Controller
         return view('home', [
             'title' => $seo->title,
             'meta_description' => $seo->meta_description,
-            'categories' => ProductCategory::query()->orderBy('sort_order')->orderBy('id')->get(),
+            'categories' => ProductCategory::query()->withActiveProducts()->orderBy('sort_order')->orderBy('id')->get(),
             'products' => Product::query()
                 ->with('category')
                 ->where('is_active', true)

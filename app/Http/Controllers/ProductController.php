@@ -20,7 +20,7 @@ class ProductController extends Controller
             'heading' => 'فروشگاه '.config('shop.name'),
             'intro' => 'همه محصولات عطاری: ادویه، دمنوش و گیاهان دارویی، عرقیات، روغن‌های گیاهی، عسل و دانه‌ها.',
             'category' => null,
-            'categories' => ProductCategory::query()->orderBy('sort_order')->get(),
+            'categories' => ProductCategory::query()->withActiveProducts()->orderBy('sort_order')->get(),
             'products' => Product::query()->with('category')->where('is_active', true)
                 ->orderBy('sort_order')->orderBy('id')->paginate(12),
         ]);
@@ -34,7 +34,7 @@ class ProductController extends Controller
             'heading' => $category->name,
             'intro' => $category->description,
             'category' => $category,
-            'categories' => ProductCategory::query()->orderBy('sort_order')->get(),
+            'categories' => ProductCategory::query()->withActiveProducts()->orderBy('sort_order')->get(),
             'products' => $category->products()->with('category')->where('is_active', true)
                 ->orderBy('sort_order')->orderBy('id')->paginate(12),
         ]);

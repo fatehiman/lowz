@@ -78,3 +78,5 @@ curl -s -o /dev/null -w '%{http_code}\n' https://lowz.ir/        # 503 while und
   `clean_demo_settings` (seller info and proforma note). The payment gateway is still the demo one.
 - **2026-10-26** — added the real catalog: `CatalogProductSeeder` (16 products, categories «فرآورده‌های گیاهی و سنتی» and
   «آرایشی و بهداشتی طبیعی»), 18 new images. Seeders only add missing rows, so edited rows are never overwritten.
+- **2026-10-26** — the 33 demo products are hidden (migration `hide_demo_products`, `is_active = 0`; rows are kept).
+  Empty categories are hidden from the shop, home page and sitemap; article links to hidden products become plain text.

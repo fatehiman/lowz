@@ -36,7 +36,7 @@ class SitemapController extends Controller
         $urls[] = ['loc' => route('home'), 'lastmod' => $products->max('updated_at')];
         $urls[] = ['loc' => route('shop'), 'lastmod' => $products->max('updated_at')];
 
-        foreach (ProductCategory::query()->orderBy('sort_order')->get() as $category) {
+        foreach (ProductCategory::query()->withActiveProducts()->orderBy('sort_order')->get() as $category) {
             $urls[] = ['loc' => route('category.show', $category)];
         }
 

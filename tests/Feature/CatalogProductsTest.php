@@ -3,6 +3,7 @@
 namespace Tests\Feature;
 
 use App\Models\Product;
+use App\Services\HtmlSanitizer;
 use Database\Seeders\CatalogProductSeeder;
 use Database\Seeders\ProductSeeder;
 use Illuminate\Foundation\Testing\RefreshDatabase;
@@ -37,5 +38,32 @@ class CatalogProductsTest extends TestCase
 
         $this->get('/products/royal-jelly')->assertOk()->assertSee('ژل رویال اصلی');
         $this->get('/category/natural-care')->assertOk()->assertSee('شامپو سبغ');
+    }
+
+    public function test_demo_products_and_empty_categories_are_hidden(): void
+    {
+        $this->seed(ProductSeeder::class);
+        $this->seed(CatalogProductSeeder::class);
+
+        $this->get('/products/turmeric')->assertNotFound();
+        $this->get('/shop')->assertOk()
+            ->assertSee('شامپو سبغ')
+            ->assertDontSee('/category/honey', false)
+            ->assertSee('/category/natural-care', false);
+        $this->get('/sitemap.xml')->assertOk()
+            ->assertDontSee('/products/turmeric<', false)
+            ->assertDontSee('/category/honey', false);
+    }
+
+    public function test_article_links_to_hidden_products_become_plain_text(): void
+    {
+        $this->seed(ProductSeeder::class);
+        $this->seed(CatalogProductSeeder::class);
+
+        $html = HtmlSanitizer::article('<p><a href="/products/turmeric">زردچوبه</a> و <a href="/products/royal-jelly">ژل رویال</a></p>');
+
+        $this->assertStringNotContainsString('/products/turmeric', $html);
+        $this->assertStringContainsString('زردچوبه', $html);
+        $this->assertStringContainsString('/products/royal-jelly', $html);
     }
 }

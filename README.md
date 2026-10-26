@@ -15,7 +15,7 @@ Built from the code of `E:\www\partycookies` (shop, cart, checkout, blog, AI art
 
 ## Features
 
-- **Shop** — 8 product categories, 49 products (33 demo products + 16 real catalog products) (`/shop`, `/category/{slug}`, `/products/{slug}`).
+- **Shop** — 8 product categories, 49 products: 16 real catalog products are shown, the 33 old demo products are hidden (`is_active = 0`, migration `hide_demo_products`). Categories without an active product are hidden from the menu and sitemap. Links to hidden products inside articles become plain text (`/shop`, `/category/{slug}`, `/products/{slug}`).
   Each product has a pack size (`products.unit`, e.g. «۱۰۰ گرم»). Product pages have JSON-LD
   (`Product`, `Offer`, `BreadcrumbList`), reviews with stars (only accepted reviews are shown), related products.
 - **Cart / checkout** — the cart lives in the browser (`localStorage` key `lowz_cart`); the server always
