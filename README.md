@@ -15,7 +15,7 @@ Built from the code of `E:\www\partycookies` (shop, cart, checkout, blog, AI art
 
 ## Features
 
-- **Shop** — 6 product categories, 33 demo products (`/shop`, `/category/{slug}`, `/products/{slug}`).
+- **Shop** — 8 product categories, 49 products (33 demo products + 16 real catalog products) (`/shop`, `/category/{slug}`, `/products/{slug}`).
   Each product has a pack size (`products.unit`, e.g. «۱۰۰ گرم»). Product pages have JSON-LD
   (`Product`, `Offer`, `BreadcrumbList`), reviews with stars (only accepted reviews are shown), related products.
 - **Cart / checkout** — the cart lives in the browser (`localStorage` key `lowz_cart`); the server always
@@ -77,7 +77,8 @@ and run them on an empty database).
 | What | Where |
 |---|---|
 | Shop name, address, phone (hidden), social links (hidden) | `config/shop.php` (or `SHOP_*` in `.env`) |
-| Categories + products | `ProductSeeder` → tables `product_categories`, `products` |
+| Categories + demo products | `ProductSeeder` → tables `product_categories`, `products` |
+| Real catalog (16 products, 2 categories) | `CatalogProductSeeder` — from `reference-docs/product-links.txt`; price = supplier price × 2.5; texts rewritten in Persian; photos in `public/images/products/` (sources in [IMAGE-CREDITS.md](IMAGE-CREDITS.md)) |
 | Article categories + AI subjects | `ArticleSubjectSeeder` → `article_categories`, `article_subjects` |
 | Starter articles | `ArticleSeeder` |
 | Page titles / descriptions | `PageSeoSeeder` → `page_seo` |

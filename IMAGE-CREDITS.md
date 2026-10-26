@@ -53,3 +53,29 @@ They will be replaced with the shop's own photos later. Logo and favicons (`publ
 | `public/images/products/turmeric.webp` | [File:Curcuma longa roots.jpg](https://commons.wikimedia.org/wiki/File:Curcuma_longa_roots.jpg) | CC BY-SA 3.0 | Simon A. Eugster |
 | `public/images/products/valerian.webp` | [File:Valeriana officinalis - Niitvälja.jpg](https://commons.wikimedia.org/wiki/File:Valeriana_officinalis_-_Niitv%C3%A4lja.jpg) | CC BY-SA 4.0 | Ivar Leidus |
 | `public/images/products/willow-water.webp` | [File:Salix aegyptiaca - Botanischer Garten München-Nymphenburg - DSC07715.JPG](https://commons.wikimedia.org/wiki/File:Salix_aegyptiaca_-_Botanischer_Garten_M%C3%BCnchen-Nymphenburg_-_DSC07715.JPG) | Public domain | Daderot |
+
+## Catalog product photos (16 products)
+
+The photos of the 16 products added from `reference-docs/product-links.txt` are **not** from Wikimedia. They were
+downloaded from the supplier / shop pages below (the owner gave these links), padded to a square and saved as WebP.
+Check that the shop may use them, or replace them with the shop's own photos. The two category images
+(`traditional-remedies.webp`, `natural-care.webp`) are made from two of these product photos.
+
+| File | Source |
+|---|---|
+| `public/images/products/laxative-herbal-tablet.webp` | basalam.com |
+| `public/images/products/turmeric-herbal-tablet.webp` | basalam.com |
+| `public/images/products/sabagh-shampoo.webp` | memaryani.ir |
+| `public/images/products/saffron-negin.webp` | baratifoods.com |
+| `public/images/products/royal-jelly.webp` | attarifandogh.ir |
+| `public/images/products/yalda-anti-lice-solution.webp` | attarifandogh.ir (small watermark in the photo) |
+| `public/images/products/amber-cigar-nasara.webp` | basalam.com |
+| `public/images/products/hab-balgham.webp` | basalam.com |
+| `public/images/products/gallstone-remedy.webp` | basalam.com |
+| `public/images/products/shaghari-soap.webp` | basalam.com |
+| `public/images/products/herbal-lipstick.webp` | basalam.com |
+| `public/images/products/earthworm-oil.webp` | basalam.com |
+| `public/images/products/herbal-acne-solution.webp` | basalam.com |
+| `public/images/products/safi-compound-syrup.webp` | basalam.com |
+| `public/images/products/lavigel-drops.webp` | basalam.com |
+| `public/images/products/hyssop-syrup.webp` | basalam.com |

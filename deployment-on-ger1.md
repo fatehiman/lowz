@@ -76,3 +76,5 @@ curl -s -o /dev/null -w '%{http_code}\n' https://lowz.ir/        # 503 while und
 - **2026-10-26** — site made public (`site:construction off`). Then: demo notes removed, real address set, phone numbers
   and social icons hidden, cart minus button removes the product at the minimum quantity, migration
   `clean_demo_settings` (seller info and proforma note). The payment gateway is still the demo one.
+- **2026-10-26** — added the real catalog: `CatalogProductSeeder` (16 products, categories «فرآورده‌های گیاهی و سنتی» and
+  «آرایشی و بهداشتی طبیعی»), 18 new images. Seeders only add missing rows, so edited rows are never overwritten.
