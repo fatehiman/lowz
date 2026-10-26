@@ -14,8 +14,8 @@ class SettingSeeder extends Seeder
     public function run(): void
     {
         $rows = [
-            'seller_info' => 'عطاری لوز (اطلاعات فروشنده نمایشی است)',
-            'proforma_payment_note' => 'این پیش‌فاکتور نمونه است. پس از اتصال درگاه پرداخت واقعی، شماره حساب فروشگاه اینجا نوشته می‌شود. مبالغ همگی به تومان است.',
+            'seller_info' => 'عطاری لوز',
+            'proforma_payment_note' => 'مبالغ همگی به تومان است.',
             'min_order_items' => '1',
             'packing_price' => '0',
             'pack_capacity' => '12',

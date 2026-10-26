@@ -10,13 +10,16 @@
 
         <div class="footer-contact">
             <span>📍 {{ config('shop.address') }}</span>
-            <span>☎ <a href="tel:{{ preg_replace('/[^\d+]/', '', config('shop.phone')) }}" dir="ltr">{{ fa_number(config('shop.phone')) }}</a></span>
+            @if (config('shop.phone'))
+                <span>☎ <a href="tel:{{ preg_replace('/[^\d+]/', '', config('shop.phone')) }}" dir="ltr">{{ fa_number(config('shop.phone')) }}</a></span>
+            @endif
             <span>🕘 {{ config('shop.hours') }}</span>
         </div>
 
         <p class="footer-brand">{{ config('shop.name') }} — {{ config('shop.tagline') }}</p>
         <p class="footer-copy">&copy; {{ fa_number(\Morilog\Jalali\Jalalian::now()->getYear()) }} {{ config('shop.name') }}. تمامی حقوق محفوظ است.</p>
 
+        @if (array_filter(config('shop.social')))
         <div class="footer-social">
             <a href="{{ config('shop.social.instagram') }}" target="_blank" rel="noopener noreferrer" aria-label="اینستاگرام {{ config('shop.name') }}" class="social-icon social-instagram">
                 <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
@@ -49,7 +52,6 @@
                 </svg>
             </a>
         </div>
-
-        <p class="footer-demo">این یک سایت نمونه است؛ همه محصولات، قیمت‌ها، مقالات و اطلاعات تماس نمایشی هستند.</p>
+        @endif
     </div>
 </footer>

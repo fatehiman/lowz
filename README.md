@@ -6,8 +6,9 @@ garlic logo. Laravel 12 + Blade, plain CSS and vanilla JS (no build step).
 Built from the code of `E:\www\partycookies` (shop, cart, checkout, blog, AI articles, SEO) and the
 "under construction" idea of `E:\www\narjeshesari`.
 
-> **All data is demo**: products, prices, descriptions, articles, reviews, address, phone numbers and images.
-> The payment gateway is a placeholder (no money moves). Replace them before the real launch.
+> **The site is public** (since 2026-10-26, under construction mode is off). Products, prices, descriptions, articles,
+> reviews and images are still demo data. The payment gateway is a placeholder (no money moves).
+> Phone numbers and social links are hidden until the owner has real ones (see "Contact info" below).
 
 - **Repo:** https://github.com/fatehiman/lowz (public — never commit secrets)
 - **Production:** https://lowz.ir on `ger1` — see [deployment-on-ger1.md](deployment-on-ger1.md)
@@ -35,9 +36,18 @@ Built from the code of `E:\www\partycookies` (shop, cart, checkout, blog, AI art
   about page, rules / privacy page.
 - **SEO** — titles/descriptions per page (`page_seo` table), canonical URLs, Open Graph, sitemap, robots.txt.
 
+## Contact info (hidden items)
+
+- Address (real): `config/shop.php` → `address` (or `SHOP_ADDRESS` in `.env`).
+- **Phone numbers are hidden** everywhere (footer, `/contact`, JSON-LD) while `SHOP_PHONE` and `SHOP_MOBILE` are empty.
+  To show them later, set them in the server `.env` (then `php8.4 artisan config:cache`) or give them a default in
+  `config/shop.php`. The footer and the contact page already have the markup.
+- **Social icons are hidden** while `SHOP_INSTAGRAM`, `SHOP_TELEGRAM`, `SHOP_WHATSAPP` are empty. Set a link to show the footer icons.
+- The cart minus button removes the product when the quantity is at the product minimum.
+
 ## Under construction mode
 
-On after the first install (setting `maintenance_enabled = 1`), so visitors and search engines do not see the demo.
+The mode is **off now** (public since 2026-10-26). It was on after the first install (setting `maintenance_enabled = 1`), so visitors and search engines do not see the demo.
 
 - Everybody gets a waiting page: HTTP **503** with `Retry-After`, `X-Robots-Tag: noindex`.
 - `robots.txt` says `Disallow: /`; `sitemap.xml` is also closed. Every page has `noindex` while the mode is on,
@@ -66,7 +76,7 @@ and run them on an empty database).
 
 | What | Where |
 |---|---|
-| Shop name, phone, address, social links | `config/shop.php` (or `SHOP_*` in `.env`) |
+| Shop name, address, phone (hidden), social links (hidden) | `config/shop.php` (or `SHOP_*` in `.env`) |
 | Categories + products | `ProductSeeder` → tables `product_categories`, `products` |
 | Article categories + AI subjects | `ArticleSubjectSeeder` → `article_categories`, `article_subjects` |
 | Starter articles | `ArticleSeeder` |

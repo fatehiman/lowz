@@ -39,7 +39,7 @@ After the first deploy the AI keys were copied by hand (server to server) from t
 
 ## Under construction
 
-On. Visitors get 503, `robots.txt` says `Disallow: /`. Preview link: `https://lowz.ir/preview/<UNDER_CONSTRUCTION_TOKEN>`
+**Off since 2026-10-26** (the site is public). When it is on, visitors get 503 and `robots.txt` says `Disallow: /`. Preview link: `https://lowz.ir/preview/<UNDER_CONSTRUCTION_TOKEN>`
 (the link is in `E:\www\myLan\credentials.md`).
 
 ```bash
@@ -73,3 +73,6 @@ curl -s -o /dev/null -w '%{http_code}\n' https://lowz.ir/        # 503 while und
   9 reviews, provinces/cities). AI keys copied from partycookies. 12 AI articles generated with
   `new-article.sh run`. Verified through Cloudflare: `/up` 200, `/` 503 without the cookie, all pages 200
   with the preview cookie (with `noindex`), demo checkout and payment work locally (tests).
+- **2026-10-26** — site made public (`site:construction off`). Then: demo notes removed, real address set, phone numbers
+  and social icons hidden, cart minus button removes the product at the minimum quantity, migration
+  `clean_demo_settings` (seller info and proforma note). The payment gateway is still the demo one.

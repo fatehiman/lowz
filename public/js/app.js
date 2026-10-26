@@ -166,7 +166,7 @@
             if (addBtn) addBtn.style.display = 'none';
             if (qtyDiv) qtyDiv.style.display = 'inline-flex';
             if (qtyValue) qtyValue.textContent = quantity;
-            if (decreaseBtn) decreaseBtn.disabled = quantity <= minQuantity;
+            if (decreaseBtn) decreaseBtn.disabled = false;
         } else {
             if (addBtn) addBtn.style.display = 'inline-flex';
             if (qtyDiv) qtyDiv.style.display = 'none';
@@ -384,7 +384,6 @@
             let html = '<div class="cart-items-list">';
 
             items.forEach((item) => {
-                const decreaseDisabled = item.quantity <= item.min_quantity ? 'disabled' : '';
                 html += `
                     <div class="cart-item" data-product-id="${item.id}">
                         <div class="cart-item-image">
@@ -395,7 +394,7 @@
                             <p class="cart-item-price">${faPrice(item.price)}</p>
                         </div>
                         <div class="cart-item-quantity">
-                            <button type="button" class="btn btn-outline cart-page-decrease" data-product-id="${item.id}" data-min-quantity="${item.min_quantity}" data-quantity-step="${item.quantity_step}" ${decreaseDisabled}>-</button>
+                            <button type="button" class="btn btn-outline cart-page-decrease" data-product-id="${item.id}" data-min-quantity="${item.min_quantity}" data-quantity-step="${item.quantity_step}">-</button>
                             <span class="cart-quantity-value">${item.quantity}</span>
                             <button type="button" class="btn btn-outline cart-page-increase" data-product-id="${item.id}" data-quantity-step="${item.quantity_step}">+</button>
                         </div>
@@ -421,7 +420,11 @@
                     const minQuantity = parseInt(btn.getAttribute('data-min-quantity'), 10) || 1;
                     const step = parseInt(btn.getAttribute('data-quantity-step'), 10) || 1;
                     const qty = getCart()[pid] || 0;
-                    if (qty <= minQuantity) return;
+                    // At the minimum quantity the minus button removes the product.
+                    if (qty <= minQuantity) {
+                        removeFromCart(pid);
+                        return;
+                    }
                     updateCartItem(pid, qty - step);
                 });
             });
@@ -480,7 +483,11 @@
                 const minQuantity = card ? (parseInt(card.dataset.minQuantity, 10) || 1) : 1;
                 const step = card ? (parseInt(card.dataset.quantityStep, 10) || 1) : 1;
                 const qty = getCart()[productId] || 0;
-                if (qty <= minQuantity) return;
+                // At the minimum quantity the minus button removes the product.
+                if (qty <= minQuantity) {
+                    removeFromCart(productId);
+                    return;
+                }
                 updateCartItem(productId, qty - step);
             });
         });

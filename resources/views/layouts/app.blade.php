@@ -62,7 +62,6 @@
             'url' => url('/'),
             'logo' => asset('web-app-manifest-512x512.png'),
             'image' => asset('og-image.png'),
-            'telephone' => config('shop.phone'),
             'address' => config('shop.address'),
         ], JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES) !!}
         </script>

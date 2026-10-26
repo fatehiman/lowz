@@ -7,7 +7,6 @@
 @section('content')
 <div class="page-section">
     <h1>تماس با ما</h1>
-    <p class="demo-note">این سایت نمونه است و نشانی، تلفن و ایمیل‌های این صفحه نمایشی هستند.</p>
 
     @if (session('success'))
         <div class="alert alert-success">{{ session('success') }}</div>
@@ -84,6 +83,7 @@
                         <p>{{ config('shop.hours') }}</p>
                     </div>
                 </li>
+                @if (config('shop.phone') || config('shop.mobile'))
                 <li class="contact-info-item">
                     <span class="contact-icon contact-icon-phone" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -92,10 +92,15 @@
                     </span>
                     <div>
                         <strong>تلفن</strong>
-                        <p dir="ltr"><a href="tel:{{ preg_replace('/[^\d+]/', '', config('shop.phone')) }}">{{ config('shop.phone') }}</a></p>
-                        <p dir="ltr"><a href="tel:{{ config('shop.mobile') }}">{{ config('shop.mobile') }}</a></p>
+                        @if (config('shop.phone'))
+                            <p dir="ltr"><a href="tel:{{ preg_replace('/[^\d+]/', '', config('shop.phone')) }}">{{ config('shop.phone') }}</a></p>
+                        @endif
+                        @if (config('shop.mobile'))
+                            <p dir="ltr"><a href="tel:{{ config('shop.mobile') }}">{{ config('shop.mobile') }}</a></p>
+                        @endif
                     </div>
                 </li>
+                @endif
                 <li class="contact-info-item">
                     <span class="contact-icon contact-icon-email" aria-hidden="true">
                         <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
